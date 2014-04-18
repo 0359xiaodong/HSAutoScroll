@@ -9,6 +9,7 @@ About
 ====================
 
 How to create an auto-scroll method with a HorizontalScrollView and an Integer value declared thanks to an EditText?
+
 This project is a demo from the related SO question: <a href="http://stackoverflow.com/a/23001821/2668136" target="_blank">Auto Scroll to HorizontalScrollView</a>.
 
 
