@@ -3,7 +3,7 @@ HSVAutoScroll
 
 Auto-Scroll to display a view in the middle of the screen with HorizontalScrollView in Android
 
-![HSVautoscroll-screenshot](/Settings/hsv-auto-scroll-screenshot.png "HSVautoscroll-screenshot")
+![HSVautoscroll-screenshot](/Settings/hsv-autoscroll-screenshot.png "HSVautoscroll-screenshot")
 
 About
 ====================
