@@ -1,10 +1,9 @@
-package com.example.test;
+package com.android.devdefllo.sample.hsautoscroll;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,8 +14,9 @@ import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+public class HSActivity extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +31,12 @@ public class MainActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
@@ -49,9 +44,6 @@ public class MainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
 	public static class PlaceholderFragment extends Fragment {
 		
 		HorizontalScrollView mHS;
@@ -73,17 +65,18 @@ public class MainActivity extends ActionBarActivity {
 		    edit = (EditText)rootView.findViewById(R.id.edit); 
 		    edit.setOnKeyListener(new View.OnKeyListener() {
 	            public boolean onKey(View v, int keyCode, KeyEvent event) {
-	                // TODO Auto-generated method stub
-	                if (keyCode == KeyEvent.KEYCODE_ENTER) { //Whenever you got user click enter. Get text in edittext and check it equal test1. If it's true do your code in listenerevent of button3
-	                    if(!"".equals(edit.getText().toString())) {
-	                    	// Do a Runnable on the inflated view
+	                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+	                    if(!"".equals(edit.getText().toString()) 
+	                    				&& Integer.parseInt(edit.getText().toString()) <= 15) {
 	            		    mHS.post(new Runnable() {
 	            		        @Override
 	            		        public void run() {
 	            		        	autoScroll(Integer.parseInt(edit.getText().toString()));
 	            		        }
 	            		    });
-	                    }
+	                    } else
+	                    	Toast.makeText(getActivity(), "Insert correct value (only \"1\" to \"15\").", 
+	                    				Toast.LENGTH_LONG).show();
 	                }
 					return false;
 	            }
@@ -97,26 +90,15 @@ public class MainActivity extends ActionBarActivity {
             DisplayMetrics metrics = getActivity().getResources()
                                      .getDisplayMetrics();
             int widthScreen = metrics.widthPixels;
-            
-            Log.v("","Width screen total = " + widthScreen);
-            // Width of the container (LinearLayout)
-            int widthContainer = mLL.getWidth();
-            Log.v("","Width container total = " + widthContainer );
 
             // Width of one child (Button)
             int widthChild = mLL.getChildAt(i-1).getWidth();
-            Log.v("","Width child = " + widthChild);
 
             // Nb children in screen    
             int nbChildInScreen = widthScreen / widthChild;
-            Log.v("","Width screen total / Width child = " + nbChildInScreen);
             
-            // 11th Child position left    
+            // Child position left    
             int positionLeftChild = mLL.getChildAt(i-1).getLeft();
-            Log.v("","6th Child position left = " + positionLeftChild);
-
-            Log.v("","6th Child position left - (nb child in screen*width child / 2) - child width / 2  = "
-            		+( positionLeftChild - ( (nbChildInScreen * widthChild) / 2 ) + widthChild/2 ));
 			
             // Auto scroll to the middle
             mHS.smoothScrollTo( ( positionLeftChild - ( ( nbChildInScreen * widthChild ) / 2 ) + widthChild/2 ), 0);
