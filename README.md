@@ -1,4 +1,4 @@
-HSVAutoScroll
+HSAutoScroll
 =============
 
 Auto-Scroll to display a view in the middle of the screen with HorizontalScrollView in Android
@@ -12,6 +12,10 @@ How to create an auto-scroll method with a HorizontalScrollView and an Integer v
 
 This project is a demo from the related SO question: <a href="http://stackoverflow.com/a/23001821/2668136" target="_blank">Auto Scroll to HorizontalScrollView</a>.
 
+Project page
+====================
+
+Find how to built this project on <a href="http://www.webdefllo.com/android-horizontal-scrollview-autoscroll.php" target="_blank">AutoScroll in HorizontalScrollView from webdefllo.com</a>
 
 Library Docs
 ====================
