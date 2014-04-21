@@ -68,12 +68,7 @@ public class HSActivity extends ActionBarActivity {
 	                if (keyCode == KeyEvent.KEYCODE_ENTER) {
 	                    if(!"".equals(edit.getText().toString()) 
 	                    				&& Integer.parseInt(edit.getText().toString()) <= 15) {
-	            		    mHS.post(new Runnable() {
-	            		        @Override
-	            		        public void run() {
-	            		        	autoScroll(Integer.parseInt(edit.getText().toString()));
-	            		        }
-	            		    });
+	            		    autoScroll(Integer.parseInt(edit.getText().toString()));
 	                    } else
 	                    	Toast.makeText(getActivity(), "Insert correct value (only \"1\" to \"15\").", 
 	                    				Toast.LENGTH_LONG).show();
